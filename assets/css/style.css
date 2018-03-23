@@ -4,3 +4,12 @@ body {
     background-size: cover;
     position: absolute;
 }
+
+p {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+#game {
+    text-align: center;
+}
