@@ -49,3 +49,64 @@ document.onkeyup = function(event) {
   }
 };
 
+
+// Initialize Firebase
+    // This is the code we copied and pasted from our app page
+    var config = {
+      apiKey: "AIzaSyAJS4YQWU5DmESeYueG1qH1NGkjv3DncEY",
+      authDomain: "fir-click-counter-7cdb9.firebaseapp.com",
+      databaseURL: "https://fir-click-counter-7cdb9.firebaseio.com",
+      storageBucket: "fir-click-counter-7cdb9.appspot.com"
+    };
+
+    firebase.initializeApp(config);
+
+    // VARIABLES
+    // --------------------------------------------------------------------------------
+
+    // Get a reference to the database service
+    var database = firebase.database();
+
+    // FUNCTIONS + EVENTS
+    // --------------------------------------------------------------------------------
+
+    // On Click of Button
+    $("#click-button").on("click", function() {
+
+      // Add to clickCounter
+      
+
+      //  Store Click Data to Firebase in a JSON property called clickCount
+      // Note how we are using the Firebase .set() method
+      database.ref().set({
+        winCount: wins,
+        lossCount: losses,
+        tiesCount: ties
+      });
+    });
+
+    // MAIN PROCESS + INITIAL CODE
+    // --------------------------------------------------------------------------------
+
+    // Using .on("value", function(snapshot)) syntax will retrieve the data
+    // from the database (both initially and every time something changes)
+    // This will then store the data inside the variable "snapshot". We could rename "snapshot" to anything.
+    database.ref().on("value", function(snapshot) {
+
+      // Then we console.log the value of snapshot
+      console.log(snapshot.val());
+
+      // Then we change the html associated with the number.
+      $("#click-value").text(snapshot.val().clickCount);
+
+      // Then update the clickCounter variable with data from the database.
+      clickCounter = snapshot.val().clickCount;
+
+    // If there is an error that Firebase runs into -- it will be stored in the "errorObject"
+    // Again we could have named errorObject anything we wanted.
+    }, function(errorObject) {
+
+      // In case of error this will print the error
+      console.log("The read failed: " + errorObject.code);
+    });
+
