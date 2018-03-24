@@ -52,14 +52,16 @@ document.onkeyup = function(event) {
 
 // Initialize Firebase
     // This is the code we copied and pasted from our app page
-    var config = {
-      apiKey: "AIzaSyAJS4YQWU5DmESeYueG1qH1NGkjv3DncEY",
-      authDomain: "fir-click-counter-7cdb9.firebaseapp.com",
-      databaseURL: "https://fir-click-counter-7cdb9.firebaseio.com",
-      storageBucket: "fir-click-counter-7cdb9.appspot.com"
-    };
-
-    firebase.initializeApp(config);
+    // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyB4jFCFQTtqZq-mjpy93GkzZmJW_h4_xZw",
+    authDomain: "rps-multiplayer-game-ad35d.firebaseapp.com",
+    databaseURL: "https://rps-multiplayer-game-ad35d.firebaseio.com",
+    projectId: "rps-multiplayer-game-ad35d",
+    storageBucket: "",
+    messagingSenderId: "528642204779"
+  };
+  firebase.initializeApp(config);
 
     // VARIABLES
     // --------------------------------------------------------------------------------
